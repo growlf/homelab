@@ -1,37 +1,49 @@
-## Welcome to GitHub Pages
+# Homelab In A Box
+...preamble, purpose, and general description.
 
-You can use the [editor on GitHub](https://github.com/growlf/homelab/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+##  Assumptions and Expectations
+You are... you know how to... you have....
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Minimums
+- Windows, Linux, or MAC with an SSH terminal installed.  Used as your console and remote management tool.
+- github account - WITH uploaded SSH key.
+- internet connectivity of at least 10mb speed and ability to download a few fairly large files
+- one or more computing systems to be used as servers
+- a dedicated router that is more than standard consumer grade (See Mikrotik or using an SBC as a router)
 
-### Markdown
+### Nice to haves
+static IP address from ISP
+greater than 10MB connectivity
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Preparation and Planning
+- Network config and access...
+- Access and IPs - external access, DNS, accounts you might need (a registrar, CDN, DynDNS, ...) etc..
+- Hardware....  at least 1 machine that can even be an [[SBC]].  More power is always better, but one small Raspberry Pi would be enough.
 
-```markdown
-Syntax highlighted code block
+## Network - the glue
+either configure a router, or build one from an SBC and use a simple OpenWRT or similar.
 
-# Header 1
-## Header 2
-### Header 3
+## Lets Begin
+### OS - A basic Linux server
+Common to all nodes in our home lab Linux systems.  We are choosing a [Debian](https://www.debian.org/)  based distrobution for simplicity and coverage for multiple hardware options.  
 
-- Bulleted
-- List
+If you are using a Raspberry Pi, it is recommended to use the [Raspberry Pi Configurator](https://www.raspberrypi.com/software/) and choose the default installation. 
 
-1. Numbered
-2. List
+If you are using another type of system, there will likely be a version of Debian or Ubuntu that is already available for it.  If you are using an AMD or Intel based system, simply follow the direction on the Ubuntu website for installing the latest LTS server version.
+...
+- enable ssh
+- enable default pubkey from github account
 
-**Bold** and _Italic_ and `Code` text
+### NAS - Network Attached Storage
+If using SBCs - best to your OMV, otherwise it is strongly suggested to youe TrueNAS (is free now) on an Intel/AMD based system instead.
+- install a NAS - including a drive (don't just use the SBC's SD card)
+	- create a share for:
+		- Portainer
+		- NGiNX Proxy Manager
+		- etc...  maybe we will just describe the process
 
-[Link](url) and ![Image](src)
-```
+### The Swarm - Docker cluster
+- install Docker
+- install Portainer (use the NAS for the volumes)
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/growlf/homelab/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+...
